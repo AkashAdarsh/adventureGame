@@ -5,6 +5,8 @@
 1. Time spent: Spent about 7 hours on the design, map and coding part of the project. 
 
 2.  Testing:
+
+
     *Manually tested the code for bugs, also used doctests. For matching with transcripts i used diff checker.
 
     *3 must keys, exit might be khaali but should be there
@@ -34,6 +36,8 @@
     
     
 5. The three implemented extentions are:
+
+
       -Drop
       
       -Directions as abbreviation 
