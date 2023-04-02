@@ -36,7 +36,7 @@ def get_processor(*args):
     if item_to_get not in items:
         print("There's no {item} anywhere.".format(item=item_to_get))
         return None
-    print(f"You pick up the {item_to_get}")
+    print(f"You pick up the {item_to_get}.")
     return item_to_get
 
 
