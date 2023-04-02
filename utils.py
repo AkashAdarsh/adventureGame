@@ -27,7 +27,7 @@ def get_processor(*args):
     if items is None:
         items = []
     if len(rest) <= 0:
-        print("Sorry, you need to 'get' something")
+        print("Sorry, you need to 'get' something.")
         return None
     if len(rest) > 1:
         print('Enter a single item!')
@@ -43,7 +43,7 @@ def get_processor(*args):
 def inventory_processor(*args):
     inventory = args[3]
     if not len(inventory):
-        print("You're not carrying anything")
+        print("You're not carrying anything.")
         return None
     print('Inventory:\n  {items}'.format(items='\n  '.join(inventory)))
 
