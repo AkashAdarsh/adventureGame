@@ -65,7 +65,7 @@ class Adventure:
         if verb == SUPPORTED_VERBS['GO'] and return_value:
             new_direction = return_value
             if new_direction in directions:
-                print(f"You go {new_direction}")
+                print(f"You go {new_direction}.")
                 self.current_room_id = directions[new_direction]
         if verb == SUPPORTED_VERBS['GET'] and return_value:
             item_to_get = return_value
