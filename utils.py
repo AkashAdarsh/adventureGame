@@ -15,7 +15,7 @@ def go_processor(*args):
         print('Enter a valid exit!')
         return None
     if to_go not in directions:
-        print(f"There's no way to go {to_go}")
+        print(f"There's no way to go {to_go}.")
         return None
     return to_go
 
