@@ -1,7 +1,7 @@
-[  {    "name": "The Beach",
-    "desc": "You are standing on a sandy beach with the sound of waves in the distance.",    
+[  {    "name": "Santa Barbara Beach",
+    "desc": "You are standing on a crowded beach with the sound of whales in the far distance.",    
     "exits": {"north": 1, "south": 2, "east": 3},    
-    "items": ["seashell", "sunglasses"]
+    "items": ["gold", "secretmap"]
   },
   {
     "name": "The Lighthouse",
@@ -10,63 +10,63 @@
     "items": []
   },
   {
-    "name": "The Forest",
+    "name": "Amazon Forest",
     "desc": "You are surrounded by tall trees in a dense forest.",
     "exits": {"north": 0, "east": 5, "south": 6},
-    "items": ["mushroom", "berries"]
+    "items": ["Mario mushroom", "Poison berries"]
   },
   {
-    "name": "The Cave",
-    "desc": "You enter a dark and damp cave.",
+    "name": "Cave of Tranquility",
+    "desc": "You enter a dark and damp cave, and find a lagoon",
     "exits": {"west": 1, "south": 7},
-    "items": ["torch", "rope"]
+    "items": ["torch", "the lost arc"]
   },
   {
-    "name": "The Garden",
-    "desc": "You find yourself in a beautiful garden filled with blooming flowers.",
+    "name": "Washington square park",
+    "desc": "You find yourself in a beautiful garden filled with blooming flowers, and people from everywhere around the world",
     "exits": {"west": 1, "north": 8},
-    "items": ["watering can", "gloves"]
+    "items": ["watering can", "gloves", "Treasure chest"]
   },
   {
-    "name": "The River",
-    "desc": "You come across a peaceful river flowing through the forest.",
+    "name": "Nile River",
+    "desc": "You come across a Gushing river flowing through the forest.",
     "exits": {"west": 2, "east": 9},
     "items": ["fish"]
   },
   {
-    "name": "The Waterfall",
+    "name": "Mystic Waterfall",
     "desc": "You see a majestic waterfall cascading down from the cliffs above.",
     "exits": {"north": 2, "south": 10},
-    "items": ["umbrella"]
+    "items": ["umbrella", "Swimming Trunks"]
   },
   {
-    "name": "The Chamber",
-    "desc": "You enter a dark and mysterious chamber with ancient markings on the walls.",
+    "name": "The Chamber of Secrets",
+    "desc": "You enter a dark and mysterious chamber with ancient markings on the walls. AND A GIANT SNAKE!",
     "exits": {"north": 3, "east": 11},
-    "items": ["scroll"]
+    "items": ["scroll", "Horcrux"]
   },
   {
-    "name": "The Meadow",
+    "name": "The Meadow of Joy",
     "desc": "You find yourself in a lush meadow filled with colorful wildflowers.",
     "exits": {"south": 2, "east": 8, "north": 11},
-    "items": ["butterfly"]
+    "items": ["butterfly", "peace"]
   },
   {
-    "name": "The Castle",
+    "name": "Castle of Doom",
     "desc": "You see a grand castle in the distance, surrounded by a moat.",
     "exits": {"north": 5, "south": 6, "west": 9},
-    "items": ["key"]
+    "items": ["key to the tower"]
   },
   {
-    "name": "The Cavern",
+    "name": "The Cavern of Mystique",
     "desc": "You are in a dark and eerie cavern, with stalactites and stalagmites all around you.",
     "exits": {"north": 7, "south": 8, "west": 10},
-    "items": ["crystal"]
+    "items": ["crystal ball"]
   },
   {
-    "name": "The Tower",
+    "name": "THE Tower",
     "desc": "You see a tall tower rising up in the distance, its spire piercing the sky.",
     "exits": {"west": 8, "south": 11},
-    "items": []
+    "items": ["Princess you've come to get and save"]
   }
 ]
