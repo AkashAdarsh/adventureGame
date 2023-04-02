@@ -89,7 +89,7 @@ class Adventure:
                                             SUPPORTED_VERBS['QUIT'], SUPPORTED_VERBS['HELP']]:
                 self.show_room_details()
             try:
-                query = input('What would you like to do?')
+                query = input('What would you like to do? ')
                 is_valid_query = self.query_validator(query)
                 if not is_valid_query:
                     print('Please enter a valid verb!!!\n')
