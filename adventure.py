@@ -16,12 +16,6 @@ class Adventure:
         self.has_user_quit = False
         self.last_typed_verb = ''
 
-    def __getitem__(self, key):
-        return self.__dict__[f"{key}"]
-
-    def __setitem__(self, key, value):
-        self.__dict__[f"{key}"] = value
-
     @staticmethod
     def validate_rooms(self):
         total_rooms = len(self.rooms)
@@ -37,9 +31,7 @@ class Adventure:
         return True
 
     def show_room_details(self):
-        current_room_id = self.__getitem__('current_room_id')
-        rooms = self.__getitem__('rooms')
-        room = rooms[current_room_id]
+        room = self.rooms[self.current_room_id]
         name, desc, exits = itemgetter('name', 'desc', 'exits')(room)
         items = room.get('items', [])
         print("> {name}\n\n{desc}\n".format(name=name, desc=desc))
@@ -62,34 +54,62 @@ class Adventure:
         verb, rest = words[0], words[1:]
         if verb == SUPPORTED_VERBS['QUIT']:
             print("Goodbye!")
-            self.__setitem__('has_user_quit', True)
+            self.has_user_quit = True
             return
         if verb in ABBREVIATED_EXITS:
             rest = [ABBREVIATED_EXITS[verb]]
             verb = SUPPORTED_VERBS['GO']
-        current_room_id = self.__getitem__('current_room_id')
-        rooms = self.__getitem__('rooms')
-        inventory = self.__getitem__('inventory')
-        directions = rooms[current_room_id].get('exits', {})
-        items = rooms[current_room_id].get('items', [])
-        return_value = verb_processors[verb](rest, directions, items, inventory)
+        directions = self.rooms[self.current_room_id].get('exits', {})
+        items = self.rooms[self.current_room_id].get('items', [])
+        return_value = verb_processors[verb](rest, directions, items, self.inventory)
         if verb == SUPPORTED_VERBS['GO'] and return_value:
             new_direction = return_value
             if new_direction in directions:
                 print(f"You go {new_direction}")
-                self.__setitem__('current_room_id', directions[new_direction])
+                self.current_room_id = directions[new_direction]
         if verb == SUPPORTED_VERBS['GET'] and return_value:
             item_to_get = return_value
-            all_items = rooms[current_room_id].get('items', [])
+            all_items = self.rooms[self.current_room_id].get('items', [])
             if len(all_items):
                 rest_items = list(filter(lambda item: item != item_to_get, all_items))
                 self.rooms[self.current_room_id]['items'] = copy.deepcopy(rest_items)
-                inventory.append(item_to_get)
-                self.__setitem__('inventory', inventory)
+                self.inventory.append(item_to_get)
         if verb == SUPPORTED_VERBS['DROP'] and return_value:
             item_to_drop = return_value
             rem_items = list(filter(lambda item: item != item_to_drop, self.inventory))
-            all_items = rooms[current_room_id].get('items', [])
+            all_items = self.rooms[self.current_room_id].get('items', [])
             all_items.append(item_to_drop)
             self.rooms[self.current_room_id]['items'] = copy.deepcopy(all_items)
-            self.__setitem__('inventory', copy.deepcopy(rem_items))
+            self.inventory = copy.deepcopy(rem_items)
+        self.last_typed_verb = verb
+
+    def start_game(self):
+        while not self.has_user_quit:
+            if self.last_typed_verb not in [SUPPORTED_VERBS['GET'], SUPPORTED_VERBS['INVENTORY'],
+                                            SUPPORTED_VERBS['QUIT'], SUPPORTED_VERBS['HELP']]:
+                self.show_room_details()
+            try:
+                query = input('What would you like to do?')
+                is_valid_query = self.query_validator(query)
+                if not is_valid_query:
+                    print('Please enter a valid verb!!!\n')
+                    continue
+                self.query_processor(query)
+            except EOFError:
+                print("\nUse 'quit' to exit.")
+                self.last_typed_verb = SUPPORTED_VERBS['QUIT']
+
+
+def main():
+    file_path = sys.argv[1]
+    with open(file_path, 'r') as f:
+        data = json.load(f)
+        adventure = Adventure(data)
+        if not adventure.validate_rooms(adventure):
+            print('Invalid Map provided!!!')
+            return
+        adventure.start_game()
+
+
+if __name__ == "__main__":
+    main()
