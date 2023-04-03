@@ -67,6 +67,7 @@ class Adventure:
             if new_direction in directions:
                 print(f"You go {new_direction}.\n")
                 self.current_room_id = directions[new_direction]
+            self.show_room_details()
         if verb == SUPPORTED_VERBS['GET'] and return_value:
             item_to_get = return_value
             all_items = self.rooms[self.current_room_id].get('items', [])
@@ -85,7 +86,7 @@ class Adventure:
 
     def start_game(self):
         while not self.has_user_quit:
-            if self.last_typed_verb not in [SUPPORTED_VERBS['GET'], SUPPORTED_VERBS['INVENTORY'],
+            if self.last_typed_verb not in [SUPPORTED_VERBS['GO'], SUPPORTED_VERBS['GET'], SUPPORTED_VERBS['INVENTORY'],
                                             SUPPORTED_VERBS['QUIT'], SUPPORTED_VERBS['HELP']]:
                 self.show_room_details()
             try:
