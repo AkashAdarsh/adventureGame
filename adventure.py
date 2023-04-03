@@ -36,7 +36,7 @@ class Adventure:
         items = room.get('items', [])
         print("> {name}\n\n{desc}\n".format(name=name, desc=desc))
         if len(items):
-            print("Items: {items}\n".format(items=' '.join(items)))
+            print("Items: {items}, \n".format(items=' '.join(items)))
         print("Exits: {exits}\n".format(exits=' '.join(exits)))
 
     @staticmethod
