@@ -45,7 +45,7 @@ def inventory_processor(*args):
     if not len(inventory):
         print("You're not carrying anything.")
         return None
-    print('Inventory:\n  {items}'.format(items='\n  '.join(inventory)))
+    print('Inventory:\n  {items}, '.format(items='\n  '.join(inventory)))
 
 
 def look_processor(*args):
